@@ -144,3 +144,4 @@ C:\Users\DELL\source\repos\FoodExpress\FoodExpress\obj\Debug\net8.0\refint\FoodE
 C:\Users\DELL\source\repos\FoodExpress\FoodExpress\obj\Debug\net8.0\FoodExpress.pdb
 C:\Users\DELL\source\repos\FoodExpress\FoodExpress\obj\Debug\net8.0\FoodExpress.genruntimeconfig.cache
 C:\Users\DELL\source\repos\FoodExpress\FoodExpress\obj\Debug\net8.0\ref\FoodExpress.dll
+C:\Users\DELL\source\repos\FoodExpress\FoodExpress\obj\Debug\net8.0\FoodExpress.sourcelink.json

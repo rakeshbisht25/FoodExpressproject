@@ -18,5 +18,15 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: #f4f6f9;
 }
+
+.card {
+    border: none;
+    border-radius: 15px;
+}
+
+    .card:hover {
+        transform: translateY(-3px);
+        transition: 0.3s;
+    }
