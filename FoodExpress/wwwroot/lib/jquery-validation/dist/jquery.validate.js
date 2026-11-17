@@ -349,14 +349,14 @@ $.extend( $.validator, {
 		},
 		highlight: function( element, errorClass, validClass ) {
 			if ( element.type === "radio" ) {
-				this.findByName( element.name ).addClass( errorClass ).removeClass( validClass );
+				this.findByname( element.name ).addClass( errorClass ).removeClass( validClass );
 			} else {
 				$( element ).addClass( errorClass ).removeClass( validClass );
 			}
 		},
 		unhighlight: function( element, errorClass, validClass ) {
 			if ( element.type === "radio" ) {
-				this.findByName( element.name ).removeClass( errorClass ).addClass( validClass );
+				this.findByname( element.name ).removeClass( errorClass ).addClass( validClass );
 			} else {
 				$( element ).removeClass( errorClass ).addClass( validClass );
 			}
@@ -497,7 +497,7 @@ $.extend( $.validator, {
 				if ( group ) {
 					$.each( this.groups, function( name, testgroup ) {
 						if ( testgroup === group && name !== checkElement.name ) {
-							cleanElement = v.validationTargetFor( v.clean( v.findByName( name ) ) );
+							cleanElement = v.validationTargetFor( v.clean( v.findByname( name ) ) );
 							if ( cleanElement && cleanElement.name in v.invalid ) {
 								v.currentElements.push( cleanElement );
 								result = v.check( cleanElement ) && result;
@@ -538,7 +538,7 @@ $.extend( $.validator, {
 				this.errorList = $.map( this.errorMap, function( message, name ) {
 					return {
 						message: message,
-						element: validator.findByName( name )[ 0 ]
+						element: validator.findByname( name )[ 0 ]
 					};
 				} );
 
@@ -577,7 +577,7 @@ $.extend( $.validator, {
 				for ( i = 0; elements[ i ]; i++ ) {
 					this.settings.unhighlight.call( this, elements[ i ],
 						this.settings.errorClass, "" );
-					this.findByName( elements[ i ].name ).removeClass( this.settings.validClass );
+					this.findByname( elements[ i ].name ).removeClass( this.settings.validClass );
 				}
 			} else {
 				elements
@@ -722,7 +722,7 @@ $.extend( $.validator, {
 				val, idx;
 
 			if ( type === "radio" || type === "checkbox" ) {
-				return this.findByName( element.name ).filter( ":checked" ).val();
+				return this.findByname( element.name ).filter( ":checked" ).val();
 			} else if ( type === "number" && typeof element.validity !== "undefined" ) {
 				return element.validity.badInput ? "NaN" : $element.val();
 			}
@@ -951,7 +951,7 @@ $.extend( $.validator, {
 		showLabel: function( element, message ) {
 			var place, group, errorID, v,
 				error = this.errorsFor( element ),
-				elementID = this.idOrName( element ),
+				elementID = this.idOrname( element ),
 				describedBy = $( element ).attr( "aria-describedby" );
 
 			if ( error.length ) {
@@ -1031,7 +1031,7 @@ $.extend( $.validator, {
 		},
 
 		errorsFor: function( element ) {
-			var name = this.escapeCssMeta( this.idOrName( element ) ),
+			var name = this.escapeCssMeta( this.idOrname( element ) ),
 				describer = $( element ).attr( "aria-describedby" ),
 				selector = "label[for='" + name + "'], label[for='" + name + "'] *";
 
@@ -1057,7 +1057,7 @@ $.extend( $.validator, {
 			return string.replace( /([\\!"#$%&'()*+,./:;<=>?@\[\]^`{|}~])/g, "\\$1" );
 		},
 
-		idOrName: function( element ) {
+		idOrname: function( element ) {
 			return this.groups[ element.name ] || ( this.checkable( element ) ? element.name : element.id || element.name );
 		},
 
@@ -1065,7 +1065,7 @@ $.extend( $.validator, {
 
 			// If radio/checkbox, validate first element in group instead
 			if ( this.checkable( element ) ) {
-				element = this.findByName( element.name );
+				element = this.findByname( element.name );
 			}
 
 			// Always apply ignore filter
@@ -1076,17 +1076,17 @@ $.extend( $.validator, {
 			return ( /radio|checkbox/i ).test( element.type );
 		},
 
-		findByName: function( name ) {
+		findByname: function( name ) {
 			return $( this.currentForm ).find( "[name='" + this.escapeCssMeta( name ) + "']" );
 		},
 
 		getLength: function( value, element ) {
-			switch ( element.nodeName.toLowerCase() ) {
+			switch ( element.nodename.toLowerCase() ) {
 			case "select":
 				return $( "option:selected", element ).length;
 			case "input":
 				if ( this.checkable( element ) ) {
-					return this.findByName( element.name ).filter( ":checked" ).length;
+					return this.findByname( element.name ).filter( ":checked" ).length;
 				}
 			}
 			return value.length;
@@ -1195,11 +1195,11 @@ $.extend( $.validator, {
 		creditcard: { creditcard: true }
 	},
 
-	addClassRules: function( className, rules ) {
-		if ( className.constructor === String ) {
-			this.classRuleSettings[ className ] = rules;
+	addClassRules: function( classname, rules ) {
+		if ( classname.constructor === String ) {
+			this.classRuleSettings[ classname ] = rules;
 		} else {
-			$.extend( this.classRuleSettings, className );
+			$.extend( this.classRuleSettings, classname );
 		}
 	},
 
@@ -1405,7 +1405,7 @@ $.extend( $.validator, {
 			if ( !this.depend( param, element ) ) {
 				return "dependency-mismatch";
 			}
-			if ( element.nodeName.toLowerCase() === "select" ) {
+			if ( element.nodename.toLowerCase() === "select" ) {
 
 				// Could be an array for select-multiple or a string, both are fine this way
 				var val = $( element ).val();

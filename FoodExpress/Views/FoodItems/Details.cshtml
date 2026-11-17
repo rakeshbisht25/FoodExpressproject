@@ -1,59 +1,71 @@
-@model FoodExpress.Models.FoodItem
+﻿@model FoodExpress.Models.FoodItem
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Food Item Details";
 }
 
-<h1>Details</h1>
+<div class="container mt-4">
 
-<div>
-    <h4>FoodItem</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CategoryId)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <div class="card shadow">
+
+        <div class="card-header bg-info text-white">
+            <h3 class="mb-0">Food Item Details</h3>
+        </div>
+
+        <div class="card-body">
+
+            <dl class="row">
+
+                <dt class="col-sm-3">
+                    Name
+                </dt>
+                <dd class="col-sm-9">
+                    @Model.Name
+                </dd>
+
+                <dt class="col-sm-3">
+                    Description
+                </dt>
+                <dd class="col-sm-9">
+                    @Model.Description
+                </dd>
+
+                <dt class="col-sm-3">
+                    Price
+                </dt>
+                <dd class="col-sm-9">
+                    ₹@Model.Price
+                </dd>
+
+                <dt class="col-sm-3">
+                    Image Url
+                </dt>
+                <dd class="col-sm-9">
+                    @Model.ImageUrl
+                </dd>
+
+                <dt class="col-sm-3">
+                    Category
+                </dt>
+                <dd class="col-sm-9">
+                    @Model.Category?.Name
+                </dd>
+
+            </dl>
+
+            <a asp-action="Edit"
+               asp-route-id="@Model.Id"
+               class="btn btn-warning">
+                Edit
+            </a>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Back
+            </a>
+
+        </div>
+
+    </div>
+
 </div>

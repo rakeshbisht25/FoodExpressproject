@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using FoodExpress.Models;
 using FoodExpress.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
+
+
 
 public class CategoriesController : Controller
 {
@@ -39,6 +42,7 @@ public class CategoriesController : Controller
     }
 
     // GET: CATEGORYS/Create
+    [Authorize]
     public IActionResult Create()
     {
         return View();
@@ -61,6 +65,7 @@ public class CategoriesController : Controller
     }
 
     // GET: CATEGORYS/Edit/5
+    [Authorize]
     public async Task<IActionResult> Edit(int? id)
     {
         if (id == null)
@@ -112,6 +117,7 @@ public class CategoriesController : Controller
     }
 
     // GET: CATEGORYS/Delete/5
+    [Authorize]
     public async Task<IActionResult> Delete(int? id)
     {
         if (id == null)
